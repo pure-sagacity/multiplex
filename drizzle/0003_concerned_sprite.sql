@@ -1,0 +1,1 @@
+ALTER TABLE "board" RENAME COLUMN "auth_id" TO "author_id";

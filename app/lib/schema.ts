@@ -1,9 +1,9 @@
 import { relations } from "drizzle-orm";
-import { pgTable, text, timestamp, boolean, index } from "drizzle-orm/pg-core";
+import { pgTable, text, timestamp, boolean, index, uuid } from "drizzle-orm/pg-core";
 
 export const board = pgTable("board", {
-    boardId: text("board_id").primaryKey(),
-    authId: text("auth_id").notNull(),
+    boardId: uuid("id").primaryKey().defaultRandom(),
+    authorID: text("author_id").notNull(),
     title: text("title").notNull(),
     isPublic: boolean("is_public").default(false).notNull(),
     createdAt: timestamp("created_at").defaultNow().notNull(),
@@ -26,6 +26,8 @@ export const user = pgTable("user", {
     banned: boolean("banned").default(false),
     banReason: text("ban_reason"),
     banExpires: timestamp("ban_expires"),
+    username: text("username").unique(),
+    displayUsername: text("display_username"),
 });
 
 export const session = pgTable(

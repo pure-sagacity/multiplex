@@ -1,0 +1,1 @@
+ALTER TABLE "board" RENAME COLUMN "board_id" TO "id";
