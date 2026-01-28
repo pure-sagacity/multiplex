@@ -11,7 +11,6 @@
   "dependencies": {
     "@neondatabase/serverless": "^1.0.2",
     "better-auth": "^1.4.17",
-    "daisyui": "^5.5.14",
     "dotenv": "^17.2.3",
     "drizzle-orm": "^0.45.1",
     "lucide-react": "^0.563.0",
@@ -26,6 +25,7 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "babel-plugin-react-compiler": "1.0.0",
+    "daisyui": "^5.5.14",
     "drizzle-kit": "^0.31.8",
     "eslint": "^9",
     "eslint-config-next": "16.1.5",
