@@ -1,14 +1,11 @@
-import db from "@/app/lib/drizzle";
 import { eq, or, sql } from "drizzle-orm";
 import { board } from "@/app/lib/schema";
+import { getSession } from "@/app/actions/auth/GetSession";
+import db from "@/app/lib/drizzle";
 import Board from "@/app/components/Board";
-import auth from "@/app/lib/auth";
-import { headers } from "next/headers";
 
 export default async function BoardsPage() {
-    const session = await auth.api.getSession({
-        headers: await headers()
-    });
+    const session = await getSession();
     const userId = session?.user?.id;
 
     let boards;

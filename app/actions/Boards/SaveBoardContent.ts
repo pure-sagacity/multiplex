@@ -1,17 +1,14 @@
 'use server';
 
-import db from "@/app/lib/drizzle";
 import { eq } from "drizzle-orm";
 import { board } from "@/app/lib/schema";
-import auth from "@/app/lib/auth";
-import { headers } from "next/headers";
+import { getSession } from "../auth/GetSession";
+import db from "@/app/lib/drizzle";
 
 export default async function SaveBoardContent(boardId: string, content: string) {
     try {
         // Get the current session
-        const session = await auth.api.getSession({
-            headers: await headers()
-        });
+        const session = await getSession();
 
         if (!session || !session.user) {
             return { success: false, error: 'Not authenticated' };

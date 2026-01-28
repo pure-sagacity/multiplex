@@ -4,6 +4,7 @@ import { Toast, ToastContainer } from '@/app/components/Toast';
 import { useState } from 'react';
 import Login from '@/app/actions/auth/Login';
 import Link from 'next/link';
+import { redirect } from 'next/navigation';
 
 export default function LoginPage() {
     const [toasts, setToasts] = useState<Array<{ id: number; message: string; type: 'info' | 'success' | 'error' }>>([]);
@@ -25,10 +26,8 @@ export default function LoginPage() {
 
         await Login(email as string, password as string)
             .then((res) => {
-                if (res.redirect && res.url) {
-                    if (typeof window !== 'undefined') {
-                        window.location.href = res.url;
-                    }
+                if (res.redirect) {
+                    redirect("/");
                 }
             })
             .catch((error) => {

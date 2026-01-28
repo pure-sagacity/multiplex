@@ -1,7 +1,6 @@
-import GetUser from '@/app/actions/Users/GetUser';
-import auth from '@/app/lib/auth';
 import { User, Mail, Calendar, Shield, Ban, Clock, AtSign, CheckCircle, XCircle } from 'lucide-react';
-import { headers } from 'next/headers';
+import { getSession } from '@/app/actions/auth/GetSession';
+import GetUser from '@/app/actions/Users/GetUser';
 
 interface User {
     id: string,
@@ -32,9 +31,7 @@ const formatDate = (date: Date) => {
 export default async function UserProfilePage({ params }: { params: Promise<{ id: string }> }) {
     const { id: userId } = await params;
     const request: User | null = await GetUser(userId, "username");
-    const session = await auth.api.getSession({
-        headers: await headers()
-    }); // This will just be used to check if you are the viewed user.
+    const session = await getSession();
 
     const isYou = session?.user.id === request?.id;
 

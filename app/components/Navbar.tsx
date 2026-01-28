@@ -1,17 +1,14 @@
+import { Pencil, KeyRound } from "lucide-react";
+import { getSession } from "../actions/auth/GetSession";
 import Link from "next/link";
 import Image from "next/image";
-import auth from "../lib/auth";
-import { Pencil, KeyRound } from "lucide-react";
-import { headers } from "next/headers";
 import Dropdown from "./Dropdown";
 import AvatarButton from "./AvatarButton";
 
 const DEFAULT_PROFILE_IMAGE = "https://onlcvwoumznbkbugtqas.supabase.co/storage/v1/object/public/profile_pics/default_profile.png";
 
 export default async function Navbar() {
-    const session = await auth.api.getSession({
-        headers: await headers(),
-    });
+    const session = await getSession();
 
     const hasSession = session ? true : false;
     const avatarImage = session?.user.image || DEFAULT_PROFILE_IMAGE;
