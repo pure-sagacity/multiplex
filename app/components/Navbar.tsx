@@ -47,8 +47,8 @@ export default async function Navbar() {
                     </Link>
                 )}
                 {hasSession && session?.user.image && (
-                    <div className="w-10 rounded-full">
-                        <img src={session?.user.image} />
+                    <div className="w-10 h-10 rounded-full overflow-hidden">
+                        <img src={session?.user.image} className="w-full h-full object-cover" />
                     </div>
                 )}
             </div>

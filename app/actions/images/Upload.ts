@@ -1,4 +1,4 @@
-import supabase from "@/app/lib/supabase";
+import { supabaseAdmin } from "@/app/lib/supabase";
 
 const BUCKET_NAME = 'profile_pics';
 
@@ -33,8 +33,8 @@ export async function uploadProfilePicture(file: File): Promise<{
         // Generate random filepath
         const filepath = generateRandomFilename(file);
 
-        // Upload to Supabase
-        const { data, error } = await supabase.storage
+        // Upload to Supabase using admin client for server-side uploads
+        const { data, error } = await supabaseAdmin.storage
             .from(BUCKET_NAME)
             .upload(filepath, file, {
                 cacheControl: '3600',
@@ -46,7 +46,7 @@ export async function uploadProfilePicture(file: File): Promise<{
         }
 
         // Get public URL
-        const { data: urlData } = supabase.storage
+        const { data: urlData } = supabaseAdmin.storage
             .from(BUCKET_NAME)
             .getPublicUrl(filepath);
 
@@ -71,7 +71,7 @@ export async function uploadProfilePicture(file: File): Promise<{
  */
 export async function downloadProfilePicture(filepath: string) {
     try {
-        const { data, error } = await supabase.storage
+        const { data, error } = await supabaseAdmin.storage
             .from(BUCKET_NAME)
             .download(filepath);
 
@@ -98,7 +98,7 @@ export async function downloadProfilePicture(filepath: string) {
  * @returns The public URL
  */
 export function getProfilePictureUrl(filepath: string): string {
-    const { data } = supabase.storage
+    const { data } = supabaseAdmin.storage
         .from(BUCKET_NAME)
         .getPublicUrl(filepath);
 
@@ -112,7 +112,7 @@ export function getProfilePictureUrl(filepath: string): string {
  */
 export async function deleteProfilePicture(filepath: string) {
     try {
-        const { error } = await supabase.storage
+        const { error } = await supabaseAdmin.storage
             .from(BUCKET_NAME)
             .remove([filepath]);
 
