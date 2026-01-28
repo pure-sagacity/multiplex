@@ -3,11 +3,11 @@ import { pgTable, text, timestamp, boolean, index, uuid } from "drizzle-orm/pg-c
 
 export const board = pgTable("board", {
     boardId: uuid("id").primaryKey().defaultRandom(),
-    authorID: text("author_id").notNull(),
+    authorID: text("author_id").notNull(), // User ID of the board creator
     title: text("title").notNull(),
     isPublic: boolean("is_public").default(false).notNull(),
     createdAt: timestamp("created_at").defaultNow().notNull(),
-    editors: text("editors").array().default([]).notNull(),
+    editors: text("editors").array().default([]).notNull(), // Array of user IDs
     data: text("data").notNull(),
 });
 

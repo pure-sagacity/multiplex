@@ -17,7 +17,6 @@ export default function SignupPage() {
         displayUsername: '',
     });
     const [imagePreview, setImagePreview] = useState<string | null>(null);
-    const [DisplayNameManuallyEdited, setDisplayNameManuallyEdited] = useState(false);
     const [toasts, setToasts] = useState<Array<{ id: number; message: string; type: 'info' | 'success' | 'error' }>>([]);
     const [loading, setLoading] = useState<boolean>(false);
 
@@ -37,12 +36,9 @@ export default function SignupPage() {
             setFormData((prev) => ({
                 ...prev,
                 username: value,
-                // Update displayUsername only if it hasn't been manually edited
-                displayUsername: DisplayNameManuallyEdited ? prev.displayUsername : value,
             }));
         } else if (name === 'displayUsername') {
             setFormData((prev) => ({ ...prev, displayUsername: value }));
-            setDisplayNameManuallyEdited(true);
         } else {
             setFormData((prev) => ({ ...prev, [name]: value }));
         }

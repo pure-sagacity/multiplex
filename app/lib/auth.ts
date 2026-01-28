@@ -6,6 +6,7 @@ import { user, session, account, verification } from "./schema";
 import db from "./drizzle"; // your drizzle instance
 
 const auth = betterAuth({
+    baseURL: process.env.BETTER_AUTH_URL || "http://localhost:3000",
     database: drizzleAdapter(db, {
         provider: "pg", // or "mysql", "sqlite"
         schema: {
