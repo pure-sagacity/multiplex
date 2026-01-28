@@ -2,6 +2,7 @@ import GetUser from "../actions/Users/GetUser";
 import GetBoard from "../actions/Boards/GetBoard";
 import ReactMarkdown from "react-markdown";
 import User from "./User";
+import Link from "next/link";
 
 interface Props {
     boardId: string;
@@ -47,7 +48,8 @@ export default async function Board({ boardId }: Props) {
     }
 
     return (
-        <div className="w-full max-w-md p-6 border border-gray-200 rounded-lg shadow-sm bg-white hover:shadow-md transition-shadow">
+        <Link href={`/board/${boardId}`}>
+            <div className="w-full max-w-md p-6 border border-gray-200 rounded-lg shadow-sm bg-white hover:shadow-md transition-shadow cursor-pointer">
             {/* Markdown Preview Section */}
             <div className="mb-4 pb-4 border-b border-gray-200">
                 <div
@@ -83,6 +85,7 @@ export default async function Board({ boardId }: Props) {
                     </div>
                 )}
             </div>
-        </div>
+            </div>
+        </Link>
     );
 }

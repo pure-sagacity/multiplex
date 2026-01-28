@@ -18,3 +18,94 @@
   --color-accent-800: #67AC38;
   --color-accent-900: #50882A;
 }
+
+/* CodeMirror Light Theme */
+.cm-editor {
+  background-color: #ffffff;
+  color: #171717;
+  border: 1px solid #e5e7eb;
+}
+
+.cm-gutters {
+  background-color: #f9fafb;
+  border-right: 1px solid #e5e7eb;
+}
+
+.cm-activeLineGutter {
+  background-color: #f3f4f6;
+}
+
+.cm-cursor {
+  border-left-color: #171717;
+}
+
+.cm-selectionBackground {
+  background-color: #dbeafe;
+}
+
+.cm-lineNumbers .cm-gutterMarker {
+  color: #d1d5db;
+}
+
+.cm-lineNumbers .cm-lineNumber {
+  color: #9ca3af;
+}
+
+/* Highlight.js Atom One Light (for code blocks) */
+.hljs {
+  color: #383a42;
+  background: #fafafa;
+}
+
+.hljs-attr,
+.hljs-attribute {
+  color: #e45649;
+}
+
+.hljs-built_in,
+.hljs-builtin-name {
+  color: #c18401;
+}
+
+.hljs-literal,
+.hljs-number {
+  color: #0184bc;
+}
+
+.hljs-code,
+.hljs-meta,
+.hljs-regexp,
+.hljs-selector-id,
+.hljs-template-tag,
+.hljs-variable {
+  color: #e45649;
+}
+
+.hljs-class,
+.hljs-title {
+  color: #c18401;
+}
+
+.hljs-strong {
+  font-weight: bold;
+  color: #e45649;
+}
+
+.hljs-emphasis {
+  color: #e45649;
+  font-style: italic;
+}
+
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-section,
+.hljs-link {
+  color: #a626a4;
+}
+
+.hljs-bullet,
+.hljs-quote,
+.hljs-string,
+.hljs-subst {
+  color: #50a14f;
+}

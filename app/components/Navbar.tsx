@@ -1,8 +1,10 @@
 import Link from "next/link";
 import Image from "next/image";
 import auth from "../lib/auth";
+import SignOut from "../actions/auth/SignOut";
 import { Pencil, KeyRound } from "lucide-react";
 import { headers } from "next/headers";
+import Dropdown from "./Dropdown";
 
 export default async function Navbar() {
     const session = await auth.api.getSession({
@@ -48,7 +50,7 @@ export default async function Navbar() {
                 )}
                 {hasSession && session?.user.image && (
                     <div className="w-10 h-10 rounded-full overflow-hidden">
-                        <img src={session?.user.image} className="w-full h-full object-cover" />
+                        <Image src={session.user.image as string} alt="User avatar" width={40} height={40} className="w-full h-full object-cover" />
                     </div>
                 )}
             </div>
