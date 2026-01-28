@@ -48,24 +48,25 @@ export default async function Board({ boardId }: Props) {
     }
 
     return (
-        <Link href={`/board/${boardId}`}>
-            <div className="w-full max-w-md p-6 border border-gray-200 rounded-lg shadow-sm bg-white hover:shadow-md transition-shadow cursor-pointer">
+        <div className="w-full max-w-md p-6 border border-gray-200 rounded-lg shadow-sm bg-white hover:shadow-md transition-shadow">
             {/* Markdown Preview Section */}
-            <div className="mb-4 pb-4 border-b border-gray-200">
+            <Link href={`/board/${boardId}`} className="block mb-4 pb-4 border-b border-gray-200">
                 <div
-                    className="prose prose-sm max-h-30 overflow-hidden line-clamp-3 p-3 bg-gray-50 rounded-md text-sm leading-relaxed text-black"
+                    className="prose prose-sm max-h-30 overflow-hidden line-clamp-3 p-3 bg-gray-50 rounded-md text-sm leading-relaxed text-black cursor-pointer"
                     style={{ lineClamp: MAX_PREVIEW_LINES }}
                 >
                     <ReactMarkdown>
                         {data.slice(0, 300) + (data.length > 300 ? "…" : "")}
                     </ReactMarkdown>
                 </div>
-            </div>
+            </Link>
 
             {/* Info Section */}
             <div className="space-y-2 text-xs text-gray-500">
                 <div className="flex items-center justify-between">
-                    <span className="font-medium text-gray-900">{title}</span>
+                    <Link href={`/board/${boardId}`} className="font-medium text-gray-900 hover:underline">
+                        {title}
+                    </Link>
                     <span className={isPublic ? "px-2 py-0.5 bg-green-100 text-green-800 rounded-full text-xs" : "px-2 py-0.5 bg-gray-100 text-gray-800 rounded-full text-xs"}>
                         {isPublic ? "Public" : "Private"}
                     </span>
@@ -85,7 +86,6 @@ export default async function Board({ boardId }: Props) {
                     </div>
                 )}
             </div>
-            </div>
-        </Link>
+        </div>
     );
 }

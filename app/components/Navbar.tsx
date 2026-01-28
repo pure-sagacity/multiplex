@@ -1,10 +1,12 @@
 import Link from "next/link";
 import Image from "next/image";
 import auth from "../lib/auth";
-import SignOut from "../actions/auth/SignOut";
 import { Pencil, KeyRound } from "lucide-react";
 import { headers } from "next/headers";
 import Dropdown from "./Dropdown";
+import AvatarButton from "./AvatarButton";
+
+const DEFAULT_PROFILE_IMAGE = "https://onlcvwoumznbkbugtqas.supabase.co/storage/v1/object/public/profile_pics/default_profile.png";
 
 export default async function Navbar() {
     const session = await auth.api.getSession({
@@ -12,6 +14,7 @@ export default async function Navbar() {
     });
 
     const hasSession = session ? true : false;
+    const avatarImage = session?.user.image || DEFAULT_PROFILE_IMAGE;
 
     return (
         <nav className="flex items-center justify-between bg-white shadow-sm px-6 py-3">
@@ -48,10 +51,20 @@ export default async function Navbar() {
                         Login
                     </Link>
                 )}
-                {hasSession && session?.user.image && (
-                    <div className="w-10 h-10 rounded-full overflow-hidden">
-                        <Image src={session.user.image as string} alt="User avatar" width={40} height={40} className="w-full h-full object-cover" />
-                    </div>
+                {hasSession && (
+                    <Dropdown ButtonComponent={AvatarButton} buttonComponentProps={{ imageSrc: avatarImage }}>
+                        <li>
+                            <Link href={`/user/${session?.user.username}`} className="block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded">
+                                Profile
+                            </Link>
+                        </li>
+                        <li>
+                            <a href="#" className="block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded">Settings</a>
+                        </li>
+                        <li>
+                            <a href="#" className="block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded">Help</a>
+                        </li>
+                    </Dropdown>
                 )}
             </div>
         </nav >

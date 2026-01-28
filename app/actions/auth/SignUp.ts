@@ -8,6 +8,8 @@ export default async function SignUp(name: string, email: string, password: stri
     if (image) {
         const upload = await uploadProfilePicture(image);
         imageUrl = upload?.publicUrl;
+    } else {
+        imageUrl = "https://onlcvwoumznbkbugtqas.supabase.co/storage/v1/object/public/profile_pics/default_profile.png"; // Default profile picture URL
     }
 
     return auth.api.signUpEmail({
