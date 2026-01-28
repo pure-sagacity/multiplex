@@ -10,8 +10,8 @@ export default async function Home() {
     redirect("/boards");
   }
   return (
-    <main>
-      <h1>Hello</h1>
+    <main className="bg-white min-h-screen">
+      <h1 className="text-2xl text-black bg-white p-2">Hello</h1>
     </main>
   );
 }

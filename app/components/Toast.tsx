@@ -17,7 +17,7 @@ export function Toast({ message, type, duration = 3000, onDismiss }: ToastProps)
     }, [duration, onDismiss]);
 
     return (
-        <div className={`alert alert-${type}`}>
+        <div className={`alert alert-${type}`} onClick={onDismiss}>
             <span>{message}</span>
         </div>
     )

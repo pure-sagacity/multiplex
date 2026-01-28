@@ -31,7 +31,7 @@ export default async function Navbar() {
                     (
                         <Link
                             href="/create"
-                            className="inline-flex items-center gap-2 rounded-md bg-gray-900 px-3 py-2 text-white hover:bg-gray-800 hover:font-bold transition-all"
+                            className="inline-flex items-center gap-2 rounded-md bg-accent-800 px-3 py-2 text-white hover:bg-accent-900 hover:font-bold transition-all"
                         >
                             <Pencil className="h-4 w-4" />
                             Create
@@ -40,13 +40,18 @@ export default async function Navbar() {
                 ) : (
                     <Link
                         href="/login"
-                        className="inline-flex items-center gap-2 rounded-md bg-gray-900 px-3 py-2 text-white hover:bg-gray-800 hover:font-bold transition-all"
+                        className="inline-flex items-center gap-2 rounded-md bg-accent-800 px-3 py-2 text-white hover:bg-accent-900 hover:font-bold transition-all"
                     >
                         <KeyRound className="h-4 w-4" />
                         Login
                     </Link>
                 )}
+                {hasSession && session?.user.image && (
+                    <div className="w-10 rounded-full">
+                        <img src={session?.user.image} />
+                    </div>
+                )}
             </div>
-        </nav>
+        </nav >
     );
 }
