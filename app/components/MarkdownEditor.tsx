@@ -341,7 +341,7 @@ export default function MarkdownEditor({
                         Preview
                     </div>
                     <div className="flex-1 overflow-auto p-4">
-                        <div className="prose prose-sm max-w-none text-neutral [&_a]:text-primary [&_code]:bg-neutral/10 [&_code]:px-1.5 [&_code]:py-0.5 [&_code]:rounded [&_pre]:bg-neutral/5 [&_pre]:border [&_pre]:border-neutral/20 [&_table]:border-collapse [&_table]:w-full [&_th]:border [&_th]:border-neutral/20 [&_th]:bg-neutral/10 [&_th]:p-2 [&_th]:text-left [&_td]:border [&_td]:border-neutral/20 [&_td]:p-2">
+                        <div className="prose prose-sm max-w-none text-neutral [&_h1]:text-3xl [&_h1]:font-bold [&_h1]:text-neutral [&_h1]:mt-6 [&_h1]:mb-4 [&_h2]:text-2xl [&_h2]:font-bold [&_h2]:text-neutral [&_h2]:mt-5 [&_h2]:mb-3 [&_h3]:text-xl [&_h3]:font-bold [&_h3]:text-neutral [&_h3]:mt-4 [&_h3]:mb-2 [&_a]:text-primary [&_code]:bg-neutral/10 [&_code]:px-1.5 [&_code]:py-0.5 [&_code]:rounded [&_pre]:bg-neutral/5 [&_pre]:border [&_pre]:border-neutral/20 [&_table]:border-collapse [&_table]:w-full [&_th]:border [&_th]:border-neutral/20 [&_th]:bg-neutral/10 [&_th]:p-2 [&_th]:text-left [&_td]:border [&_td]:border-neutral/20 [&_td]:p-2">
                             <ReactMarkdown
                                 remarkPlugins={[remarkGfm]}
                                 components={{
